@@ -4,7 +4,7 @@ import sys
 pygame.init()
 SCREEN_WIDTH = 288
 SCREEN_HEIGHT = 512
-FPS = 30
+FPS = 60
 
 # Desenhar a tela
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -25,6 +25,9 @@ bird_frames = [bird_down, bird_mid, bird_up]
 bird_index = 0
 bird_pos_x = 50
 bird_pos_y = 256
+speed = 0 # velocidade do passaro
+gravity = 0.5 # gravidade
+jump = 8 # Força do pulo do passaro
 
 # Game loop
 while True:
@@ -32,6 +35,13 @@ while True:
         if evt.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
+        if evt.type == pygame.KEYDOWN:
+            if evt.key == pygame.K_SPACE:
+                speed  = - jump
+        # Aplicar gravidade
+        speed += gravity
+        bird_pos_y += speed
+
         # Atualizar os frames da animação do passaro
         bird_index = (bird_index +1) % len(bird_frames)
 
