@@ -10,7 +10,6 @@ FPS = 30
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Flappy Bird Clone")
 clock = pygame.time.Clock()
-
 # Carregar os sprites
 bg = pygame.image.load("assets/background-day.png").convert()
 ground = pygame.image.load("assets/base.png").convert()
